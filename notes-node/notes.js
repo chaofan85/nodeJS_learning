@@ -35,6 +35,11 @@ const getAll = () => {
   console.log('Getting all notes');
 };
 
+const getNote = (title) => {
+  const notes = fetchNote();
+  return notes.filter((note) => note.title === title);
+};
+
 const removeNote = (title) => {
   const notes = fetchNote();
   const newNotes = notes.filter((note) => note.title !== title);
@@ -44,5 +49,6 @@ const removeNote = (title) => {
 module.exports = {
   addNote,
   getAll,
+  getNote,
   removeNote
 };

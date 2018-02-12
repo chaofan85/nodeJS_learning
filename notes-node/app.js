@@ -20,6 +20,8 @@ if (command === 'add') {
   }
 } else if (command === 'list') {
   notes.getAll();
+} else if (command === 'read') {
+  console.log(notes.getNote(argv.title));
 } else if (command === 'remove') {
   notes.removeNote(argv.title);
 }
