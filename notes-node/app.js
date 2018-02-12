@@ -10,9 +10,16 @@ const argv = yargs.argv;
 
 const command = process.argv[2];
 
+console.log(argv);
+
 if (command === 'add') {
   console.log('Adding new note');
-  notes.addNote(argv.title, argv.body);
+  const note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log(note);
+  }
 } else if (command === 'list') {
   notes.getAll();
+} else if (command === 'remove') {
+  notes.removeNote(argv.title);
 }

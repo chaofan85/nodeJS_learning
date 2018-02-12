@@ -11,24 +11,23 @@ const fetchNote = () => {
   }
 };
 
-const saveNote = () => {
-
+const saveNote = (notes) => {
+  fs.writeFileSync('note-data.json', JSON.stringify(notes));
 };
 
 const addNote = (title, body) => {
-  let notes = [];
+  let notes = fetchNote();
   const note = {
     title,
     body
   };
 
-
-
   let duplicateNotes = notes.filter((eachNote) => eachNote.title === title);
 
   if (duplicateNotes.length === 0) {
     notes.push(note);
-    fs.writeFileSync('note-data.json', JSON.stringify(notes));
+    saveNote(notes);
+    return note;
   }
 };
 
@@ -36,7 +35,14 @@ const getAll = () => {
   console.log('Getting all notes');
 };
 
+const removeNote = (title) => {
+  const notes = fetchNote();
+  const newNotes = notes.filter((note) => note.title !== title);
+  saveNote(newNotes);
+};
+
 module.exports = {
   addNote,
-  getAll
+  getAll,
+  removeNote
 };
