@@ -32,7 +32,7 @@ const addNote = (title, body) => {
 };
 
 const getAll = () => {
-  console.log('Getting all notes');
+  return fetchNote();
 };
 
 const getNote = (title) => {
