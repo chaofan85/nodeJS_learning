@@ -26,7 +26,8 @@ geocode.geocodeAddress(argv.address, (errorMessage, results) => {
       if (errorMessage) {
         console.log(errorMessage2);
       } else {
-        console.log(`It's currently ${weatherResults.temperature}. It feels like ${weatherResults.apparentTemperature}`);
+        console.log(`It's currently ${weatherResults.temperature}.`);
+        console.log(`It feels like ${weatherResults.apparentTemperature}.`);
       }
     });
   }
