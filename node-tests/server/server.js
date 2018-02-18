@@ -9,6 +9,23 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/users', (req, res) => {
+  res.send([
+    {
+      name: 'Chao Fan',
+      age: 32
+    },
+    {
+      name: 'Randy Zeese',
+      age: 64
+    },
+    {
+      name: 'Darryl Stephen',
+      age: 59 
+    }
+  ]);
+});
+
 app.listen(3000);
 
 module.exports.app = app;

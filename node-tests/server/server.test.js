@@ -14,3 +14,16 @@ it('should return hello world response', (done) => {
     })
     .end(done);
 });
+
+it('should contain Chao Fan', (done) => {
+  request(app)
+    .get('/users')
+    .expect(200)
+    .expect((res) => {
+      expect(res.body).toInclude({
+        name: 'Chao Fan',
+        age: 32
+      });
+    })
+    .end(done);
+});
