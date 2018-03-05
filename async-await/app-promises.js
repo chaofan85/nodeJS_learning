@@ -6,6 +6,10 @@ const users = [{
   id: 2,
   name: 'Randy',
   schoolId: 999
+},{
+  id: 3,
+  name: 'Colin',
+  schoolId: 99
 }];
 
 const grades = [];
