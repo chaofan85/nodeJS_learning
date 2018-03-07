@@ -13,10 +13,16 @@ const getCountries = (currencyCode) => {
               });
 };
 
-const convertCurrency = () => {
+const convertCurrency = (from, to, amount) => {
+  return getCountries(to).then((countries) => {
+    return getExchangeRate(from, to);
+  }).then((rate) => {
+    const exchangeAmount = amount * rate;
 
+    return `${amount} ${from} is worth ${exchangeAmount} ${to}`;
+  });
 };
 
-getCountries('CAD').then((countries) => {
-  console.log(countries);
+convertCurrency('CAD', 'USD', 100).then((status) => {
+  console.log(status);
 });
