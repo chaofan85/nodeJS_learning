@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 const getExchangeRate = (from, to) => {
-  return axios.get(`https://api.fixer.io/latest?base=${from}`).then((response) => {
+  return axios.get(`https://api.fixer.io/latest?base=${from}`)
+    .then((response) => {
     return response.data.rates[to];
   });
 };
