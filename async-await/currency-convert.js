@@ -19,6 +19,7 @@ const convertCurrency = (from, to, amount) => {
     return getExchangeRate(from, to);
   }).then((rate) => {
     const exchangeAmount = amount * rate;
+    
     return `${amount} ${from} is worth ${exchangeAmount} ${to}`;
   });
 };
