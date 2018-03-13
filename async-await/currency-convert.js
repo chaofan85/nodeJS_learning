@@ -15,15 +15,29 @@ const getCountries = (currencyCode) => {
 };
 
 const convertCurrency = (from, to, amount) => {
-  return getCountries(to).then((countries) => {
+  let countries;
+  return getCountries(to).then((tempCountries) => {
+    countries = tempCountries;
     return getExchangeRate(from, to);
   }).then((rate) => {
     const exchangeAmount = amount * rate;
-    
-    return `${amount} ${from} is worth ${exchangeAmount} ${to}`;
+
+    return `${amount} ${from} is worth ${exchangeAmount} ${to}.
+    ${to} be used in the following countries: ${countries.join(', ')}`;
+
   });
 };
 
-convertCurrency('CAD', 'USD', 100).then((status) => {
+const convertCurrencyAlt = async (from, to, amount) => {
+  const countries = await getCountries(to);
+  const rate = await getExchangeRate(from, to);
+
+  const exchangeAmount = amount * rate;
+
+  return `${amount} ${from} is worth ${exchangeAmount} ${to}.
+  ${to} be used in the following countries: ${countries.join(', ')}`;
+}
+
+convertCurrencyAlt('CAD', 'USD', 100).then((status) => {
   console.log(status);
 });
